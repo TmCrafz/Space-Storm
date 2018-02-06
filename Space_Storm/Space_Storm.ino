@@ -1,4 +1,5 @@
 #include <Arduboy2.h>
+#include "Vector2.hpp"
 
 Arduboy2 arduboy;
 
@@ -14,12 +15,15 @@ const unsigned int PLAYER_SPRITE_HEIGHT = 9;
 int playerPosX = 0;
 int playerPosY = 0;
 
-void setup() {
+void setup()
+{
     arduboy.begin();
+    arduboy.initRandomSeed();
     arduboy.clear();
 }
 
-void loop() {
+void loop()
+{
     // Needed for using justPressed() method
     arduboy.pollButtons();
     if (arduboy.pressed(UP_BUTTON)) {
@@ -34,7 +38,6 @@ void loop() {
     if (arduboy.pressed(RIGHT_BUTTON)) {
         playerPosX++;
     }
-    
     arduboy.clear();    
     // params: posX, posY, image, width, height, COLOR (When white, all white pixels are drawn white)
     arduboy.drawBitmap(playerPosX, playerPosY, PLAYER_SPRITE, PLAYER_SPRITE_WIDTH, PLAYER_SPRITE_HEIGHT);
