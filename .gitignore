@@ -29,6 +29,7 @@
 
 # Tmp files
 *.temp
+*.tmp
 
 # Others
 *.vim
