@@ -1,5 +1,6 @@
 #include <Arduboy2.h>
 #include "Vector2.hpp"
+#include "Entity.hpp"
 
 Arduboy2 arduboy;
 
@@ -12,20 +13,23 @@ const unsigned char PLAYER_SPRITE[] PROGMEM = {
 const unsigned int PLAYER_SPRITE_WIDTH = 13;
 const unsigned int PLAYER_SPRITE_HEIGHT = 9;
 
-int playerPosX = 0;
-int playerPosY = 0;
+Entity player;
 
 void setup()
 {
     arduboy.begin();
     arduboy.initRandomSeed();
     arduboy.clear();
+    
+    player.setSprite(PLAYER_SPRITE, PLAYER_SPRITE_WIDTH, PLAYER_SPRITE_HEIGHT);
 }
 
 void loop()
 {
     // Needed for using justPressed() method
     arduboy.pollButtons();
+    int playerPosX = player.getPosition().x;
+    int playerPosY = player.getPosition().y;
     if (arduboy.pressed(UP_BUTTON)) {
         playerPosY--;
     }
@@ -38,8 +42,10 @@ void loop()
     if (arduboy.pressed(RIGHT_BUTTON)) {
         playerPosX++;
     }
-    arduboy.clear();    
+    player.setPosition(playerPosX, playerPosY);
+    arduboy.clear();
     // params: posX, posY, image, width, height, COLOR (When white, all white pixels are drawn white)
-    arduboy.drawBitmap(playerPosX, playerPosY, PLAYER_SPRITE, PLAYER_SPRITE_WIDTH, PLAYER_SPRITE_HEIGHT);
+    //arduboy.drawBitmap(playerPosX, playerPosY, PLAYER_SPRITE, PLAYER_SPRITE_WIDTH, PLAYER_SPRITE_HEIGHT);
+    player.draw(arduboy);
     arduboy.display();
 }

@@ -6,6 +6,7 @@ Vector2::Vector2()
 {
 
 }
+
 Vector2::Vector2(int vecX, int vecY)
 : x{vecX}
 , y{vecY}

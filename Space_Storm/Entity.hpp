@@ -1,15 +1,24 @@
+#pragma once
+#include <Arduboy2.h>
 #include "Vector2.hpp"
+
 
 class Entity
 {
 private:
+    unsigned char* m_sprite;
+    unsigned int m_spriteWidth;
+    unsigned int m_spriteHeight;
 
-    
     Vector2 m_pos;
 
 public:
-    Enity();
+    Entity();
+
+    void setSprite(unsigned char* sprite, unsigned spriteWidth, unsigned spriteHeight);
 
     Vector2 getPosition();
-    Vector2 setPosition(int posX, int posY);
+    void setPosition(int posX, int posY);
+    
+    void draw(const Arduboy2 &arduboy);
 };
