@@ -11,14 +11,32 @@ const unsigned char PLAYER_SPRITE[] PROGMEM = {
 const unsigned int PLAYER_SPRITE_WIDTH = 13;
 const unsigned int PLAYER_SPRITE_HEIGHT = 9;
 
+int playerPosX = 0;
+int playerPosY = 0;
+
 void setup() {
     arduboy.begin();
     arduboy.clear();
 }
 
 void loop() {
-    arduboy.clear();
+    // Needed for using justPressed() method
+    arduboy.pollButtons();
+    if (arduboy.pressed(UP_BUTTON)) {
+        playerPosY--;
+    }
+    if (arduboy.pressed(DOWN_BUTTON)) {
+        playerPosY++;
+    }
+    if (arduboy.pressed(LEFT_BUTTON)) {
+        playerPosX--;
+    }  
+    if (arduboy.pressed(RIGHT_BUTTON)) {
+        playerPosX++;
+    }
+    
+    arduboy.clear();    
     // params: posX, posY, image, width, height, COLOR (When white, all white pixels are drawn white)
-    arduboy.drawBitmap(0, 0, PLAYER_SPRITE, PLAYER_SPRITE_WIDTH, PLAYER_SPRITE_HEIGHT);
+    arduboy.drawBitmap(playerPosX, playerPosY, PLAYER_SPRITE, PLAYER_SPRITE_WIDTH, PLAYER_SPRITE_HEIGHT);
     arduboy.display();
 }
