@@ -20,5 +20,7 @@ public:
     Vector2 getPosition();
     void setPosition(int posX, int posY);
     
+    void move(int x, int y);
+
     void draw(const Arduboy2 &arduboy);
 };

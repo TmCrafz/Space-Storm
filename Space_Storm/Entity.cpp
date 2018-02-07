@@ -27,6 +27,12 @@ void Entity::setPosition(int posX, int posY)
     m_pos.y = posY;
 }
 
+void Entity::move(int x, int y)
+{
+    m_pos.x += x;
+    m_pos.y += y;
+}
+
 void Entity::draw(const Arduboy2 &arduboy)
 {
     // params: posX, posY, image, width, height, COLOR 
