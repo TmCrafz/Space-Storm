@@ -33,6 +33,27 @@ void Entity::move(int x, int y)
     m_pos.y += y;
 }
 
+void Entity::moveBuffered(float x, float y)
+{
+    m_movementBufferX += x;
+    m_movementBufferY += y;
+    int movemenntX = (int) m_movementBufferX;
+    // Only move when there is min one step full
+    if (abs(movemenntX) >= 1)
+    { 
+        // Move full step
+        move(movemenntX, 0);
+        // Store rest in buffer
+        m_movementBufferX = m_movementBufferX - movemenntX;
+    }
+    int movemenntY = (int) m_movementBufferX;
+    if (abs(movemenntY) >= 1)
+    { 
+        move(movemenntY, 0);
+        m_movementBufferY = m_movementBufferY - movemenntX;
+    }
+}
+
 void Entity::draw(const Arduboy2 &arduboy)
 {
     // params: posX, posY, image, width, height, COLOR 

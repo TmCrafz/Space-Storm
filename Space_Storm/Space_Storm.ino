@@ -40,6 +40,55 @@ float determineDeltaTime()
     return deltaTime;
 }
 
+void update()
+{
+    float dt = determineDeltaTime();
+    // Needed for using justPressed() method
+    arduboy.pollButtons();
+    int playerPosX = player.getPosition().x;
+    int playerPosY = player.getPosition().y;
+    if (arduboy.pressed(UP_BUTTON)) {
+        playerPosY--;
+    }
+    if (arduboy.pressed(DOWN_BUTTON)) {
+        playerPosY++;
+    }
+    if (arduboy.pressed(LEFT_BUTTON)) {
+        playerPosX--;
+    }  
+    if (arduboy.pressed(RIGHT_BUTTON)) {
+        playerPosX++;
+    }
+    player.setPosition(playerPosX, playerPosY);
+    // Move Background
+    for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
+    {
+        bgFarAway[i].moveBuffered(-3 * dt, 0);
+    }
+
+
+}
+
+void draw()
+{
+    arduboy.clear();
+    
+    // Draw background
+    for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
+    {
+        bgFarAway[i].draw(arduboy);
+    }
+    house1.draw(arduboy);
+    player.draw(arduboy);
+    // Draw Fps
+    arduboy.setCursor(0, 0);
+    arduboy.print("FPS: ");
+    arduboy.print(averageFpsPerSec);
+    
+    arduboy.display();
+
+}
+
 void setup()
 {
     arduboy.begin();
@@ -69,38 +118,6 @@ void setup()
 
 void loop()
 {
-    float dt = determineDeltaTime();
-    // Needed for using justPressed() method
-    arduboy.pollButtons();
-    int playerPosX = player.getPosition().x;
-    int playerPosY = player.getPosition().y;
-    if (arduboy.pressed(UP_BUTTON)) {
-        playerPosY--;
-    }
-    if (arduboy.pressed(DOWN_BUTTON)) {
-        playerPosY++;
-    }
-    if (arduboy.pressed(LEFT_BUTTON)) {
-        playerPosX--;
-    }  
-    if (arduboy.pressed(RIGHT_BUTTON)) {
-        playerPosX++;
-    }
-    player.setPosition(playerPosX, playerPosY);
-    arduboy.clear();
-    
-    // Draw background
-    for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
-    {
-        bgFarAway[i].draw(arduboy);
-    }
-
-    house1.draw(arduboy);
-    player.draw(arduboy);
-    // Draw Fps
-    arduboy.setCursor(0, 0);
-    arduboy.print("FPS: ");
-    arduboy.print(averageFpsPerSec);
-    
-    arduboy.display();
+    update();
+    draw();
 }
