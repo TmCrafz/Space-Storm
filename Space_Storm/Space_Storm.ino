@@ -10,6 +10,9 @@ const unsigned int SCREEN_HEIGHT = 64;
 
 Entity player;
 Entity house1;
+const int BG_FAR_AWAY_CNT = 10;
+Entity bgFarAway[BG_FAR_AWAY_CNT];
+
 
 // DeltaTime / FPS
 long timeStampLast;
@@ -48,6 +51,18 @@ void setup()
     house1.setSprite(ImageData::BG_HOUSE_1_SPRITE, ImageData::BG_HOUSE_1_SPRITE_WIDTH, 
         ImageData::BG_HOUSE_1_SPRITE_HEIGHT);
     house1.setPosition(0, SCREEN_HEIGHT - ImageData::BG_HOUSE_1_SPRITE_HEIGHT);
+    
+    
+    for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
+    {
+        int posX = random(0, SCREEN_WIDTH + 1);
+        int posY = random(0, SCREEN_HEIGHT + 1);
+        bgFarAway[i].setPosition(posX, posY);
+        bgFarAway[i].setSprite(ImageData::BG_STAR_VERY_FAR_SPRITE, 
+            ImageData::BG_STAR_VERY_FAR_SPRITE_WIDTH, 
+            ImageData::BG_STAR_VERY_FAR_SPRITE_HEIGHT
+        );
+    }
 
     timeStampLast = millis();
 }
@@ -74,6 +89,12 @@ void loop()
     player.setPosition(playerPosX, playerPosY);
     arduboy.clear();
     
+    // Draw background
+    for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
+    {
+        bgFarAway[i].draw(arduboy);
+    }
+
     house1.draw(arduboy);
     player.draw(arduboy);
     // Draw Fps

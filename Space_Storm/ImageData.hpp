@@ -25,10 +25,10 @@ namespace ImageData
     const unsigned int BG_STAR_VERY_FAR_SPRITE_HEIGHT = 1;
     
     // bg_star_far
-    const unsigned char BG_STAR_VERY_SPRITE[] PROGMEM = {
+    const unsigned char BG_STAR_FAR_SPRITE[] PROGMEM = {
         0x1, 0x1, 
     };
-    const unsigned int BG_STAR_VERY_SPRITE_WIDTH = 2;
-    const unsigned int BG_STAR_VERY_SPRITE_HEIGHT = 1;
+    const unsigned int BG_STAR_FAR_SPRITE_WIDTH = 2;
+    const unsigned int BG_STAR_FAR_SPRITE_HEIGHT = 1;
 
 };
