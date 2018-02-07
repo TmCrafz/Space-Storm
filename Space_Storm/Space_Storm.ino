@@ -9,6 +9,7 @@ const unsigned int SCREEN_WIDTH = 128;
 const unsigned int SCREEN_HEIGHT = 64;
 
 Entity player;
+Entity house1;
 
 // DeltaTime / FPS
 long timeStampLast;
@@ -43,8 +44,11 @@ void setup()
     arduboy.clear();
     
     player.setSprite(ImageData::PLAYER_SPRITE, ImageData::PLAYER_SPRITE_WIDTH, 
-    ImageData::PLAYER_SPRITE_HEIGHT);
-    
+        ImageData::PLAYER_SPRITE_HEIGHT);
+    house1.setSprite(ImageData::BG_HOUSE_1_SPRITE, ImageData::BG_HOUSE_1_SPRITE_WIDTH, 
+        ImageData::BG_HOUSE_1_SPRITE_HEIGHT);
+    house1.setPosition(0, SCREEN_HEIGHT - ImageData::BG_HOUSE_1_SPRITE_HEIGHT);
+
     timeStampLast = millis();
 }
 
@@ -70,6 +74,7 @@ void loop()
     player.setPosition(playerPosX, playerPosY);
     arduboy.clear();
     
+    house1.draw(arduboy);
     player.draw(arduboy);
     // Draw Fps
     arduboy.setCursor(0, 0);
