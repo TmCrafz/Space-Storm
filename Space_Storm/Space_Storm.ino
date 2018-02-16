@@ -10,7 +10,7 @@ const unsigned int SCREEN_HEIGHT = 64;
 
 Entity player;
 Entity house1;
-const int BG_FAR_AWAY_CNT = 10;
+const int BG_FAR_AWAY_CNT = 32;
 Entity bgFarAway[BG_FAR_AWAY_CNT];
 
 
@@ -47,7 +47,7 @@ void updateBackground(float dt)
     {
         bgFarAway[i].moveBuffered(-10 * dt, 0);
         // Check if background is out of screen
-        if (bgFarAway[i].getPosition().x < 0/* + bgFarAway[i].getSpriteWidth()*/)
+        if (bgFarAway[i].getPosition().x < 0 + bgFarAway[i].getSpriteWidth())
         {
             // Out of screen so we move the star outside the screen, so its look like
             // there is a new star
