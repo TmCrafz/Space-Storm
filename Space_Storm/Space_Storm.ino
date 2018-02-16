@@ -47,15 +47,17 @@ void updateBackground(float dt)
     {
         bgFarAway[i].moveBuffered(-10 * dt, 0);
         // Check if background is out of screen
-        /*
-        if (bgFarAway[i].getPosition().x < 0 + bgFarAway[i].getSpriteWidth())
+        if (bgFarAway[i].getPosition().x < 0/* + bgFarAway[i].getSpriteWidth()*/)
         {
-
+            // Out of screen so we move the star outside the screen, so its look like
+            // there is a new star
+            // The new position is in a specific area right outside the screen with has
+            // the same size as the screen
+            int posX = random(SCREEN_WIDTH, SCREEN_WIDTH + SCREEN_WIDTH + 1);
+            int posY = random(0, SCREEN_HEIGHT + 1);
+            bgFarAway[i].setPosition(posX, posY);
         }
-        */
     }
-    // Clean up
-
 }
 
 void update()
@@ -79,7 +81,6 @@ void update()
     }
     player.setPosition(playerPosX, playerPosY);
     updateBackground(dt);
-
 }
 
 void draw()
