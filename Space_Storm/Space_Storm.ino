@@ -40,6 +40,24 @@ float determineDeltaTime()
     return deltaTime;
 }
 
+void updateBackground(float dt)
+{
+    // Move Background
+    for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
+    {
+        bgFarAway[i].moveBuffered(-10 * dt, 0);
+        // Check if background is out of screen
+        /*
+        if (bgFarAway[i].getPosition().x < 0 + bgFarAway[i].getSpriteWidth())
+        {
+
+        }
+        */
+    }
+    // Clean up
+
+}
+
 void update()
 {
     float dt = determineDeltaTime();
@@ -60,12 +78,7 @@ void update()
         playerPosX++;
     }
     player.setPosition(playerPosX, playerPosY);
-    // Move Background
-    for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
-    {
-        bgFarAway[i].moveBuffered(-3 * dt, 0);
-    }
-
+    updateBackground(dt);
 
 }
 
@@ -94,7 +107,7 @@ void setup()
     arduboy.begin();
     arduboy.initRandomSeed();
     arduboy.clear();
-    
+      
     player.setSprite(ImageData::PLAYER_SPRITE, ImageData::PLAYER_SPRITE_WIDTH, 
         ImageData::PLAYER_SPRITE_HEIGHT);
     house1.setSprite(ImageData::BG_HOUSE_1_SPRITE, ImageData::BG_HOUSE_1_SPRITE_WIDTH, 

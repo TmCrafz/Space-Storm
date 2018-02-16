@@ -27,6 +27,16 @@ void Entity::setPosition(int posX, int posY)
     m_pos.y = posY;
 }
 
+int Entity::getSpriteWidth()
+{
+    return m_spriteWidth;
+}
+
+int Entity::getSpriteHeight()
+{
+    return m_spriteHeight;
+}
+
 void Entity::move(int x, int y)
 {
     m_pos.x += x;

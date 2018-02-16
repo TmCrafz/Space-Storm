@@ -22,6 +22,9 @@ public:
     Vector2 getPosition();
     void setPosition(int posX, int posY);
     
+    int getSpriteWidth();
+    int getSpriteHeight();
+
     void move(int x, int y);
     // Remember the movement and only moves when a full step is full. When movement is more
     // then a full step the rest is buffered
