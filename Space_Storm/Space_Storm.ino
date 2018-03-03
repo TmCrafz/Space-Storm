@@ -113,6 +113,7 @@ void update()
         player.addProjectile();
     }
     player.setPosition(playerPosX, playerPosY);
+    player.update(dt);
     updateBackground(dt);
 }
 

@@ -37,3 +37,10 @@ bool Projectile::isActive() const
 {
     return m_isActive;
 }
+
+void Projectile::update(float dt)
+{
+    Entity::update(dt);
+    moveBuffered(m_velocity * dt, 0);
+
+}

@@ -27,7 +27,7 @@ void Spaceship::addProjectile()
             ImageData::PLAYER_PROJECTILE_DEFAULT_HEIGHT
     );
     m_projectiles[m_projectileArrPos].setDamage(1);
-    m_projectiles[m_projectileArrPos].setVelocity(3);
+    m_projectiles[m_projectileArrPos].setVelocity(16);
     m_projectiles[m_projectileArrPos].setIsActive(true);
     m_projectiles[m_projectileArrPos].setPosition(
         getPosition().x + getSpriteWidth() / 2 + 1,
@@ -38,6 +38,19 @@ void Spaceship::addProjectile()
     {
         m_projectileArrPos = 0;
     }        
+}
+
+
+void Spaceship::update(float dt)
+{
+    Entity::update(dt);
+    for (int i = 0; i < MAX_PROJECTILE_CNT; i++)
+    {
+        if (!m_projectiles[i].isActive()) {
+            continue;
+        }
+        m_projectiles[i].update(dt);
+    }
 }
 
 void Spaceship::draw(const Arduboy2 &arduboy)

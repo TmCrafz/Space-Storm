@@ -64,6 +64,11 @@ void Entity::moveBuffered(float x, float y)
     }
 }
 
+void Entity::update(float dt)
+{
+
+}
+
 void Entity::draw(const Arduboy2 &arduboy)
 {
     // params: posX, posY, image, width, height, COLOR 

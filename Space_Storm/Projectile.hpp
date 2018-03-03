@@ -19,4 +19,6 @@ public:
     
     void setIsActive(bool isActive);
     bool isActive() const;
+
+    virtual void update(float dt) override;
 };

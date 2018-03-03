@@ -29,6 +29,7 @@ public:
     // Remember the movement and only moves when a full step is full. When movement is more
     // then a full step the rest is buffered
     void Entity::moveBuffered(float x, float y);
-
+    
+    virtual void update(float dt);
     virtual void draw(const Arduboy2 &arduboy);
 };
