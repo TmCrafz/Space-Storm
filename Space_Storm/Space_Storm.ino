@@ -87,17 +87,25 @@ void update()
     arduboy.pollButtons();
     int playerPosX = player.getPosition().x;
     int playerPosY = player.getPosition().y;
-    if (arduboy.pressed(UP_BUTTON)) {
+    if (arduboy.pressed(UP_BUTTON))
+    {
         playerPosY--;
     }
-    if (arduboy.pressed(DOWN_BUTTON)) {
+    if (arduboy.pressed(DOWN_BUTTON))
+    {
         playerPosY++;
     }
-    if (arduboy.pressed(LEFT_BUTTON)) {
+    if (arduboy.pressed(LEFT_BUTTON))
+    {
         playerPosX--;
     }  
-    if (arduboy.pressed(RIGHT_BUTTON)) {
+    if (arduboy.pressed(RIGHT_BUTTON))
+    {
         playerPosX++;
+    }
+    if (arduboy.pressed(A_BUTTON))
+    {
+        
     }
     player.setPosition(playerPosX, playerPosY);
     updateBackground(dt);
