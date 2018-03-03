@@ -30,5 +30,5 @@ public:
     // then a full step the rest is buffered
     void Entity::moveBuffered(float x, float y);
 
-    void draw(const Arduboy2 &arduboy);
+    virtual void draw(const Arduboy2 &arduboy);
 };

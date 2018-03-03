@@ -1,6 +1,7 @@
 #include <Arduboy2.h>
 #include "Vector2.hpp"
 #include "Entity.hpp"
+#include "Spaceship.hpp"
 #include "Projectile.hpp"
 #include "ImageData.hpp"
 
@@ -9,7 +10,7 @@ Arduboy2 arduboy;
 const unsigned int SCREEN_WIDTH = 128;
 const unsigned int SCREEN_HEIGHT = 64;
 
-Entity player;
+Spaceship player;
 const int maxPlayerProjectileCnt = 10;
 Projectile playerProjectiles[maxPlayerProjectileCnt];
 int playerProjectileArrPos = 0;
@@ -109,24 +110,7 @@ void update()
     }
     if (arduboy.justPressed(B_BUTTON))
     {
-        playerProjectiles[playerProjectileArrPos].
-            setSprite(
-                ImageData::PLAYER_PROJECTILE_DEFAULT, 
-                ImageData::PLAYER_PROJECTILE_DEFAULT_WIDTH, 
-                ImageData::PLAYER_PROJECTILE_DEFAULT_HEIGHT
-        );
-        playerProjectiles[playerProjectileArrPos].setDamage(1);
-        playerProjectiles[playerProjectileArrPos].setVelocity(3);
-        playerProjectiles[playerProjectileArrPos].setIsActive(true);
-        playerProjectiles[playerProjectileArrPos].setPosition(
-            playerPosX + player.getSpriteWidth() / 2 + 1,
-            playerPosY + player.getSpriteHeight() / 2
-        );
-        playerProjectileArrPos++;
-        if (playerProjectileArrPos > maxPlayerProjectileCnt - 1)
-        {
-            playerProjectileArrPos = 0;
-        }        
+        player.addProjectile();
     }
     player.setPosition(playerPosX, playerPosY);
     updateBackground(dt);
