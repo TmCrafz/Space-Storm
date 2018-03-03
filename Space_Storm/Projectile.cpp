@@ -8,22 +8,22 @@ Projectile::Projectile()
     
 }
 
-void Projectile::setDamage(unsigned int damage)
+void Projectile::setDamage(byte damage)
 {
     m_damage = damage;
 }
 
-int Projectile::getDamage() const
+byte Projectile::getDamage() const
 {
     return m_damage;
 }
 
-void Projectile::setVelocity(int velocity)
+void Projectile::setVelocity(byte velocity)
 {
     m_velocity = velocity;
 }
 
-int Projectile::getVelocity() const
+byte Projectile::getVelocity() const
 {
     return m_velocity;
 }

@@ -7,8 +7,8 @@ class Entity
 {
 private:
     unsigned char* m_sprite;
-    unsigned int m_spriteWidth;
-    unsigned int m_spriteHeight;
+    byte m_spriteWidth;
+    byte m_spriteHeight;
 
     Vector2 m_pos;
     float m_movementBufferX;
@@ -17,15 +17,15 @@ private:
 public:
     Entity();
 
-    void setSprite(unsigned char* sprite, unsigned spriteWidth, unsigned spriteHeight);
+    void setSprite(unsigned char* sprite, byte spriteWidth, byte spriteHeight);
 
     Vector2 getPosition();
-    void setPosition(int posX, int posY);
+    void setPosition(byte posX, byte posY);
     
-    int getSpriteWidth();
-    int getSpriteHeight();
+    byte getSpriteWidth();
+    byte getSpriteHeight();
 
-    void move(int x, int y);
+    void move(byte x, byte y);
     // Remember the movement and only moves when a full step is full. When movement is more
     // then a full step the rest is buffered
     void Entity::moveBuffered(float x, float y);

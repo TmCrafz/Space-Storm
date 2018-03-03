@@ -9,7 +9,7 @@ Entity::Entity()
 
 }
 
-void Entity::setSprite(unsigned char* sprite, unsigned spriteWidth, unsigned spriteHeight)
+void Entity::setSprite(unsigned char* sprite, byte spriteWidth, byte spriteHeight)
 {
     m_sprite = sprite;
     m_spriteWidth = spriteWidth;
@@ -21,23 +21,23 @@ Vector2 Entity::getPosition()
     return m_pos;
 }
 
-void Entity::setPosition(int posX, int posY)
+void Entity::setPosition(byte posX, byte posY)
 {
     m_pos.x = posX;
     m_pos.y = posY;
 }
 
-int Entity::getSpriteWidth()
+byte Entity::getSpriteWidth()
 {
     return m_spriteWidth;
 }
 
-int Entity::getSpriteHeight()
+byte Entity::getSpriteHeight()
 {
     return m_spriteHeight;
 }
 
-void Entity::move(int x, int y)
+void Entity::move(byte x, byte y)
 {
     m_pos.x += x;
     m_pos.y += y;
@@ -47,7 +47,7 @@ void Entity::moveBuffered(float x, float y)
 {
     m_movementBufferX += x;
     m_movementBufferY += y;
-    int movemenntX = (int) m_movementBufferX;
+    byte movemenntX = (byte) m_movementBufferX;
     // Only move when there is min one step full
     if (abs(movemenntX) >= 1)
     { 
@@ -56,7 +56,7 @@ void Entity::moveBuffered(float x, float y)
         // Store rest in buffer
         m_movementBufferX = m_movementBufferX - movemenntX;
     }
-    int movemenntY = (int) m_movementBufferX;
+    byte movemenntY = (byte) m_movementBufferX;
     if (abs(movemenntY) >= 1)
     { 
         move(movemenntY, 0);

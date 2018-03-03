@@ -1,12 +1,13 @@
 #pragma once
+#include <Arduboy2.h>
 
 class Vector2
 {
 public:
-    int x;
-    int y;
+    byte x;
+    byte y;
 
 public:
     Vector2();
-    Vector2(int vecX, int vecY);
+    Vector2(byte vecX, byte vecY);
 };

@@ -7,20 +7,22 @@
 
 Arduboy2 arduboy;
 
-const unsigned int SCREEN_WIDTH = 128;
-const unsigned int SCREEN_HEIGHT = 64;
+const byte SCREEN_WIDTH = 128;
+const byte SCREEN_HEIGHT = 64;
 
 Spaceship player;
 const int maxPlayerProjectileCnt = 10;
 Projectile playerProjectiles[maxPlayerProjectileCnt];
 int playerProjectileArrPos = 0;
 //Entity house1;
-const int BG_VERY_FAR_AWAY_VEL = -10;
-const int BG_VERY_FAR_AWAY_CNT = 16;
+const byte BG_VERY_FAR_AWAY_VEL = -10;
+//const byte BG_VERY_FAR_AWAY_CNT = 16;
+const byte BG_VERY_FAR_AWAY_CNT = 0;
 Entity bgVeryFarAway[BG_VERY_FAR_AWAY_CNT];
 
-const int BG_FAR_AWAY_VEL = -20;
-const int BG_FAR_AWAY_CNT = 16;
+const byte BG_FAR_AWAY_VEL = -20;
+//const byte BG_FAR_AWAY_CNT = 16;
+const byte BG_FAR_AWAY_CNT = 0;
 Entity bgFarAway[BG_FAR_AWAY_CNT];
 
 
@@ -63,8 +65,8 @@ void updateBackground(float dt)
             // there is a new star
             // The new position is in a specific area right outside the screen with has
             // the same size as the screen
-            int posX = random(SCREEN_WIDTH, SCREEN_WIDTH + SCREEN_WIDTH + 1);
-            int posY = random(0, SCREEN_HEIGHT + 1);
+            byte posX = random(SCREEN_WIDTH, SCREEN_WIDTH + SCREEN_WIDTH + 1);
+            byte posY = random(0, SCREEN_HEIGHT + 1);
             bgVeryFarAway[i].setPosition(posX, posY);
         }
     }
@@ -78,8 +80,8 @@ void updateBackground(float dt)
             // there is a new star
             // The new position is in a specific area right outside the screen with has
             // the same size as the screen
-            int posX = random(SCREEN_WIDTH, SCREEN_WIDTH + SCREEN_WIDTH + 1);
-            int posY = random(0, SCREEN_HEIGHT + 1);
+            byte posX = random(SCREEN_WIDTH, SCREEN_WIDTH + SCREEN_WIDTH + 1);
+            byte posY = random(0, SCREEN_HEIGHT + 1);
             bgFarAway[i].setPosition(posX, posY);
         }
     }
@@ -90,8 +92,8 @@ void update()
     float dt = determineDeltaTime();
     // Needed for using justPressed() method
     arduboy.pollButtons();
-    int playerPosX = player.getPosition().x;
-    int playerPosY = player.getPosition().y;
+    byte playerPosX = player.getPosition().x;
+    byte playerPosY = player.getPosition().y;
     if (arduboy.pressed(UP_BUTTON))
     {
         playerPosY--;
@@ -166,8 +168,8 @@ void setup()
     
     for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
     {
-        int posX = random(0, SCREEN_WIDTH + 1);
-        int posY = random(0, SCREEN_HEIGHT + 1);
+        byte posX = random(0, SCREEN_WIDTH + 1);
+        byte posY = random(0, SCREEN_HEIGHT + 1);
         bgFarAway[i].setPosition(posX, posY);
         bgFarAway[i].setSprite(ImageData::BG_STAR_FAR_SPRITE, 
             ImageData::BG_STAR_FAR_SPRITE_WIDTH, 
@@ -176,8 +178,8 @@ void setup()
     }
     for (int i = 0; i < BG_VERY_FAR_AWAY_CNT; i++)
     {
-        int posX = random(0, SCREEN_WIDTH + 1);
-        int posY = random(0, SCREEN_HEIGHT + 1);
+        byte posX = random(0, SCREEN_WIDTH + 1);
+        byte posY = random(0, SCREEN_HEIGHT + 1);
         bgVeryFarAway[i].setPosition(posX, posY);
         bgVeryFarAway[i].setSprite(ImageData::BG_STAR_VERY_FAR_SPRITE, 
             ImageData::BG_STAR_VERY_FAR_SPRITE_WIDTH, 
