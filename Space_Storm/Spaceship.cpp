@@ -53,7 +53,7 @@ void Spaceship::update(float dt)
 {
     Entity::update(dt);
     m_timeoutTime += dt;
-    for (int i = 0; i < MAX_PROJECTILE_CNT; i++)
+    for (byte i = 0; i < MAX_PROJECTILE_CNT; i++)
     {
         if (!m_projectiles[i].isActive()) {
             continue;
@@ -65,7 +65,7 @@ void Spaceship::update(float dt)
 void Spaceship::draw(const Arduboy2 &arduboy)
 {
     Entity::draw(arduboy);
-    for (int i = 0; i < MAX_PROJECTILE_CNT; i++)
+    for (byte i = 0; i < MAX_PROJECTILE_CNT; i++)
     {
         if (!m_projectiles[i].isActive()) {
             continue;

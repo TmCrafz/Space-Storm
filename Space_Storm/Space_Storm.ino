@@ -11,9 +11,9 @@ const byte SCREEN_WIDTH = 128;
 const byte SCREEN_HEIGHT = 64;
 
 Spaceship player;
-const int maxPlayerProjectileCnt = 10;
+const byte maxPlayerProjectileCnt = 10;
 Projectile playerProjectiles[maxPlayerProjectileCnt];
-int playerProjectileArrPos = 0;
+byte playerProjectileArrPos = 0;
 //Entity house1;
 const byte BG_VERY_FAR_AWAY_VEL = -10;
 //const byte BG_VERY_FAR_AWAY_CNT = 16;
@@ -55,7 +55,7 @@ float determineDeltaTime()
 void updateBackground(float dt)
 {
     // Move Background
-    for (int i = 0; i < BG_VERY_FAR_AWAY_CNT; i++)
+    for (byte i = 0; i < BG_VERY_FAR_AWAY_CNT; i++)
     {
         bgVeryFarAway[i].moveBuffered(BG_VERY_FAR_AWAY_VEL * dt, 0);
         // Check if background is out of screen
@@ -70,7 +70,7 @@ void updateBackground(float dt)
             bgVeryFarAway[i].setPosition(posX, posY);
         }
     }
-    for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
+    for (byte i = 0; i < BG_FAR_AWAY_CNT; i++)
     {
         bgFarAway[i].moveBuffered(BG_FAR_AWAY_VEL * dt, 0);
         // Check if background is out of screen
@@ -124,15 +124,15 @@ void draw()
     arduboy.clear();
     
     // Draw background
-    for (int i = 0; i < BG_VERY_FAR_AWAY_CNT; i++)
+    for (byte i = 0; i < BG_VERY_FAR_AWAY_CNT; i++)
     {
         bgVeryFarAway[i].draw(arduboy);
     }
-    for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
+    for (byte i = 0; i < BG_FAR_AWAY_CNT; i++)
     {
         bgFarAway[i].draw(arduboy);
     }
-    for (int i = 0; i < maxPlayerProjectileCnt; i++)
+    for (byte i = 0; i < maxPlayerProjectileCnt; i++)
     {
         if (!playerProjectiles[i].isActive()) {
             continue;
@@ -166,7 +166,7 @@ void setup()
     //house1.setPosition(0, SCREEN_HEIGHT - ImageData::BG_HOUSE_1_SPRITE_HEIGHT);
     
     
-    for (int i = 0; i < BG_FAR_AWAY_CNT; i++)
+    for (byte i = 0; i < BG_FAR_AWAY_CNT; i++)
     {
         byte posX = random(0, SCREEN_WIDTH + 1);
         byte posY = random(0, SCREEN_HEIGHT + 1);
@@ -176,7 +176,7 @@ void setup()
             ImageData::BG_STAR_FAR_SPRITE_HEIGHT
         );
     }
-    for (int i = 0; i < BG_VERY_FAR_AWAY_CNT; i++)
+    for (byte i = 0; i < BG_VERY_FAR_AWAY_CNT; i++)
     {
         byte posX = random(0, SCREEN_WIDTH + 1);
         byte posY = random(0, SCREEN_HEIGHT + 1);
@@ -186,7 +186,6 @@ void setup()
             ImageData::BG_STAR_VERY_FAR_SPRITE_HEIGHT
         );
     }
-
     timeStampLast = millis();
 }
 
