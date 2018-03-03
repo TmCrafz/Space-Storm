@@ -7,10 +7,12 @@ class Spaceship : public Entity
 private:
     unsigned int m_hp;
     
-    static const int MAX_PROJECTILE_CNT = 10;
+    static const byte MAX_PROJECTILE_CNT = 10;
     Projectile m_projectiles[MAX_PROJECTILE_CNT];
-    int m_projectileArrPos;
-
+    byte m_projectileArrPos;
+    // Timeout in seconds
+    byte m_projectileTimeout;
+    float m_timeoutTime;
 public:
     Spaceship();
 

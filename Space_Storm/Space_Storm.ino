@@ -110,7 +110,7 @@ void update()
     {
         playerPosX++;
     }
-    if (arduboy.justPressed(B_BUTTON))
+    if (arduboy.pressed(B_BUTTON))
     {
         player.addProjectile();
     }

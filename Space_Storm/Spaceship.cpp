@@ -4,6 +4,8 @@
 Spaceship::Spaceship()
 : m_hp{10}
 , m_projectileArrPos{0}
+, m_projectileTimeout{1}
+, m_timeoutTime(m_projectileTimeout)
 {
 
 }
@@ -20,6 +22,12 @@ int Spaceship::getHp() const
 
 void Spaceship::addProjectile()
 {
+    // Only spawn projectile if timeout is over
+    if (m_timeoutTime < m_projectileTimeout)
+    {
+        return;
+    }
+    m_timeoutTime = 0.f;
     m_projectiles[m_projectileArrPos].
         setSprite(
             ImageData::PLAYER_PROJECTILE_DEFAULT, 
@@ -44,6 +52,7 @@ void Spaceship::addProjectile()
 void Spaceship::update(float dt)
 {
     Entity::update(dt);
+    m_timeoutTime += dt;
     for (int i = 0; i < MAX_PROJECTILE_CNT; i++)
     {
         if (!m_projectiles[i].isActive()) {
