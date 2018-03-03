@@ -109,8 +109,6 @@ void update()
     }
     if (arduboy.justPressed(B_BUTTON))
     {
-        Serial.print("ArrPos: ");
-        Serial.println(playerProjectileArrPos);
         playerProjectiles[playerProjectileArrPos].
             setSprite(
                 ImageData::PLAYER_PROJECTILE_DEFAULT, 
