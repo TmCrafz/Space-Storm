@@ -30,5 +30,12 @@ namespace ImageData
     };
     const unsigned int BG_STAR_FAR_SPRITE_WIDTH = 2;
     const unsigned int BG_STAR_FAR_SPRITE_HEIGHT = 1;
+    
+    // player_projectile_default
+    const unsigned char PLAYER_PROJECTILE_DEFAULT[] PROGMEM= {
+        0x1,
+    };
+    const unsigned int PLAYER_PROJECTILE_DEFAULT_WIDTH = 1;
+    const unsigned int PLAYER_PROJECTILE_DEFAULT_HEIGHT = 1;
 
 };

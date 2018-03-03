@@ -1,8 +1,9 @@
 #include "Projectile.hpp"
 
-Projectile::Projectile(unsigned int damage, int velocity)
-: m_damage{damage}
-, m_velocity{velocity}
+Projectile::Projectile()
+: m_damage{0}
+, m_velocity{0}
+, m_isActive{false}
 {
     
 }
@@ -25,4 +26,14 @@ void Projectile::setVelocity(int velocity)
 int Projectile::getVelocity() const
 {
     return m_velocity;
+}
+
+void Projectile::setIsActive(bool isActive)
+{
+    m_isActive = isActive;
+}
+
+bool Projectile::isActive() const
+{
+    return m_isActive;
 }

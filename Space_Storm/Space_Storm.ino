@@ -1,6 +1,7 @@
 #include <Arduboy2.h>
 #include "Vector2.hpp"
 #include "Entity.hpp"
+#include "Projectile.hpp"
 #include "ImageData.hpp"
 
 Arduboy2 arduboy;
@@ -9,6 +10,9 @@ const unsigned int SCREEN_WIDTH = 128;
 const unsigned int SCREEN_HEIGHT = 64;
 
 Entity player;
+const int maxPlayerProjectileCnt = 10;
+Projectile playerProjectiles[maxPlayerProjectileCnt];
+int playerProjectileArrPos = 0;
 //Entity house1;
 const int BG_VERY_FAR_AWAY_VEL = -10;
 const int BG_VERY_FAR_AWAY_CNT = 16;
@@ -103,9 +107,28 @@ void update()
     {
         playerPosX++;
     }
-    if (arduboy.pressed(A_BUTTON))
+    if (arduboy.justPressed(B_BUTTON))
     {
-        
+        Serial.print("ArrPos: ");
+        Serial.println(playerProjectileArrPos);
+        playerProjectiles[playerProjectileArrPos].
+            setSprite(
+                ImageData::PLAYER_PROJECTILE_DEFAULT, 
+                ImageData::PLAYER_PROJECTILE_DEFAULT_WIDTH, 
+                ImageData::PLAYER_PROJECTILE_DEFAULT_HEIGHT
+        );
+        playerProjectiles[playerProjectileArrPos].setDamage(1);
+        playerProjectiles[playerProjectileArrPos].setVelocity(3);
+        playerProjectiles[playerProjectileArrPos].setIsActive(true);
+        playerProjectiles[playerProjectileArrPos].setPosition(
+            playerPosX + player.getSpriteWidth() / 2 + 1,
+            playerPosY + player.getSpriteHeight() / 2
+        );
+        playerProjectileArrPos++;
+        if (playerProjectileArrPos > maxPlayerProjectileCnt - 1)
+        {
+            playerProjectileArrPos = 0;
+        }        
     }
     player.setPosition(playerPosX, playerPosY);
     updateBackground(dt);
@@ -124,6 +147,13 @@ void draw()
     {
         bgFarAway[i].draw(arduboy);
     }
+    for (int i = 0; i < maxPlayerProjectileCnt; i++)
+    {
+        if (!playerProjectiles[i].isActive()) {
+            continue;
+        }
+        playerProjectiles[i].draw(arduboy);
+    }
     //house1.draw(arduboy);
     player.draw(arduboy);
     // Draw Fps
@@ -138,6 +168,9 @@ void draw()
 void setup()
 {
     arduboy.begin();
+    // For debugging
+    Serial.begin(9600);
+    Serial.println("Test");
     arduboy.initRandomSeed();
     arduboy.clear();
       
