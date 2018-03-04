@@ -15,7 +15,7 @@ const byte maxPlayerProjectileCnt = 10;
 Projectile playerProjectiles[maxPlayerProjectileCnt];
 byte playerProjectileArrPos = 0;
 
-const byte enemyCnt = 0;
+const byte enemyCnt = 1;
 Spaceship enemys[enemyCnt];
 
 const byte BG_VERY_FAR_AWAY_VEL = -10;
