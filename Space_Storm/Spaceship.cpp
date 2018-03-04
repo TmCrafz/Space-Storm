@@ -2,7 +2,8 @@
 #include "ImageData.hpp"
 
 Spaceship::Spaceship()
-: m_hp{10}
+: m_type[0] 
+, m_hp{10}
 , m_projectileArrPos{0}
 , m_projectileTimeout{1}
 , m_timeoutTime(m_projectileTimeout)

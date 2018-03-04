@@ -162,6 +162,7 @@ void setup()
     arduboy.initRandomSeed();
     arduboy.clear();
     
+    player.setType(0);
     player.setIsActive(true);
     player.setSprite(ImageData::PLAYER_SPRITE, ImageData::PLAYER_SPRITE_WIDTH, 
         ImageData::PLAYER_SPRITE_HEIGHT);
