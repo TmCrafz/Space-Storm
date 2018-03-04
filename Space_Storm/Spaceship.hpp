@@ -25,7 +25,7 @@ public:
     void setHp(int hp);
     int getHp() const;
     
-    void addProjectile();
+    void spawnProjectile();
     void clearProjectiles();
     // Automatic movement for KI stuff
     void moveAutomatic();

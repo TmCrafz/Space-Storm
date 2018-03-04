@@ -113,7 +113,7 @@ void update()
     }
     if (arduboy.pressed(B_BUTTON))
     {
-        player.addProjectile();
+        player.spawnProjectile();
     }
     player.setPosition(playerPosX, playerPosY);
     player.update(dt);

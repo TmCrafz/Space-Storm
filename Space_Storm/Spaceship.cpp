@@ -32,7 +32,7 @@ int Spaceship::getHp() const
     return m_hp;
 }
 
-void Spaceship::addProjectile()
+void Spaceship::spawnProjectile()
 {
     // Only spawn projectile if timeout is over
     if (m_timeoutTime < m_projectileTimeout)
@@ -86,7 +86,7 @@ void Spaceship::moveAutomatic()
     }
     else if (m_type == 1)
     {
-        addProjectile();
+        spawnProjectile();
     }
 }
 
