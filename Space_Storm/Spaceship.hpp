@@ -28,7 +28,7 @@ public:
     void spawnProjectile();
     void clearProjectiles();
     // Automatic movement for KI stuff
-    void moveAutomatic();
+    void moveAutomatic(float dt);
 
     virtual void update(float dt) override;
     virtual void draw(const Arduboy2 &arduboy) override;

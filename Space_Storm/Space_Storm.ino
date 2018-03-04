@@ -9,12 +9,9 @@
 Arduboy2 arduboy;
 
 Spaceship player;
-const byte maxPlayerProjectileCnt PROGMEM = 10;
-Projectile playerProjectiles[maxPlayerProjectileCnt];
-byte playerProjectileArrPos = 0;
 
-const byte enemyCnt = 1;
-Spaceship enemys[enemyCnt];
+const byte ENEMY_CNT PROGMEM = 1;
+Spaceship enemys[ENEMY_CNT];
 
 const byte BG_VERY_FAR_AWAY_VEL PROGMEM = -10;
 //const byte BG_VERY_FAR_AWAY_CNT = 16;
@@ -117,6 +114,10 @@ void update()
     }
     player.setPosition(playerPosX, playerPosY);
     player.update(dt);
+    for (byte i = 0; i < ENEMY_CNT; i++)
+    {
+        enemys[i].update(dt);
+    }
     updateBackground(dt);
 }
 
@@ -133,12 +134,9 @@ void draw()
     {
         bgFarAway[i].draw(arduboy);
     }
-    for (byte i = 0; i < maxPlayerProjectileCnt; i++)
+    for (byte i = 0; i < ENEMY_CNT; i++)
     {
-        if (!playerProjectiles[i].isActive()) {
-            continue;
-        }
-        playerProjectiles[i].draw(arduboy);
+        enemys[i].draw(arduboy);
     }
     //house1.draw(arduboy);
     player.draw(arduboy);
@@ -190,6 +188,17 @@ void setup()
             ImageData::BG_STAR_VERY_FAR_SPRITE_WIDTH, 
             ImageData::BG_STAR_VERY_FAR_SPRITE_HEIGHT
         );
+    }
+    for (byte i = 0; i < ENEMY_CNT; i++)
+    {
+        enemys[i].setSprite(ImageData::ENEMY_1_SPRITE, 
+            ImageData::ENEMY_1_SPRITE_WIDTH, 
+            ImageData::ENEMY_1_SPRITE_HEIGHT
+        );
+        enemys[i].setType(1);
+        enemys[i].setIsActive(true);
+        enemys[i].setHp(1);
+        enemys[i].setPosition(100, i * 10);
     }
     timeStampLast = millis();
 }

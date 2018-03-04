@@ -78,7 +78,7 @@ void Spaceship::clearProjectiles()
 
 }
 
-void Spaceship::moveAutomatic()
+void Spaceship::moveAutomatic(float dt)
 {
     if (m_type == 0)
     {
@@ -94,6 +94,7 @@ void Spaceship::update(float dt)
 {
     Entity::update(dt);
     m_timeoutTime += dt;
+    moveAutomatic(dt);
     for (byte i = 0; i < MAX_PROJECTILE_CNT; i++)
     {
         if (!m_projectiles[i].isActive()) {
