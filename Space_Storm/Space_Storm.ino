@@ -4,28 +4,26 @@
 #include "Spaceship.hpp"
 #include "Projectile.hpp"
 #include "ImageData.hpp"
+#include "Globals.hpp"
 
 Arduboy2 arduboy;
 
-const byte SCREEN_WIDTH = 128;
-const byte SCREEN_HEIGHT = 64;
-
 Spaceship player;
-const byte maxPlayerProjectileCnt = 10;
+const byte maxPlayerProjectileCnt PROGMEM = 10;
 Projectile playerProjectiles[maxPlayerProjectileCnt];
 byte playerProjectileArrPos = 0;
 
 const byte enemyCnt = 1;
 Spaceship enemys[enemyCnt];
 
-const byte BG_VERY_FAR_AWAY_VEL = -10;
+const byte BG_VERY_FAR_AWAY_VEL PROGMEM = -10;
 //const byte BG_VERY_FAR_AWAY_CNT = 16;
-const byte BG_VERY_FAR_AWAY_CNT = 0;
+const byte BG_VERY_FAR_AWAY_CNT PROGMEM = 0;
 Entity bgVeryFarAway[BG_VERY_FAR_AWAY_CNT];
 
-const byte BG_FAR_AWAY_VEL = -20;
+const byte BG_FAR_AWAY_VEL PROGMEM = -20;
 //const byte BG_FAR_AWAY_CNT = 16;
-const byte BG_FAR_AWAY_CNT = 0;
+const byte BG_FAR_AWAY_CNT PROGMEM = 0;
 Entity bgFarAway[BG_FAR_AWAY_CNT];
 
 
@@ -68,8 +66,8 @@ void updateBackground(float dt)
             // there is a new star
             // The new position is in a specific area right outside the screen with has
             // the same size as the screen
-            byte posX = random(SCREEN_WIDTH, SCREEN_WIDTH + SCREEN_WIDTH + 1);
-            byte posY = random(0, SCREEN_HEIGHT + 1);
+            byte posX = random(Globals::SCREEN_WIDTH, Globals::SCREEN_WIDTH + Globals::SCREEN_WIDTH + 1);
+            byte posY = random(0, Globals::SCREEN_HEIGHT + 1);
             bgVeryFarAway[i].setPosition(posX, posY);
         }
     }
@@ -83,8 +81,8 @@ void updateBackground(float dt)
             // there is a new star
             // The new position is in a specific area right outside the screen with has
             // the same size as the screen
-            byte posX = random(SCREEN_WIDTH, SCREEN_WIDTH + SCREEN_WIDTH + 1);
-            byte posY = random(0, SCREEN_HEIGHT + 1);
+            byte posX = random(Globals::SCREEN_WIDTH, Globals::SCREEN_WIDTH + Globals::SCREEN_WIDTH + 1);
+            byte posY = random(0, Globals::SCREEN_HEIGHT + 1);
             bgFarAway[i].setPosition(posX, posY);
         }
     }
@@ -162,7 +160,7 @@ void setup()
     arduboy.initRandomSeed();
     arduboy.clear();
     
-    player.setType(0);
+    player.setType((byte)0);
     player.setIsActive(true);
     player.setSprite(ImageData::PLAYER_SPRITE, ImageData::PLAYER_SPRITE_WIDTH, 
         ImageData::PLAYER_SPRITE_HEIGHT);
@@ -173,8 +171,8 @@ void setup()
     
     for (byte i = 0; i < BG_FAR_AWAY_CNT; i++)
     {
-        byte posX = random(0, SCREEN_WIDTH + 1);
-        byte posY = random(0, SCREEN_HEIGHT + 1);
+        byte posX = random(0, Globals::SCREEN_WIDTH + 1);
+        byte posY = random(0, Globals::SCREEN_HEIGHT + 1);
         bgFarAway[i].setIsActive(true);
         bgFarAway[i].setPosition(posX, posY);
         bgFarAway[i].setSprite(ImageData::BG_STAR_FAR_SPRITE, 
@@ -184,8 +182,8 @@ void setup()
     }
     for (byte i = 0; i < BG_VERY_FAR_AWAY_CNT; i++)
     {
-        byte posX = random(0, SCREEN_WIDTH + 1);
-        byte posY = random(0, SCREEN_HEIGHT + 1);
+        byte posX = random(0, Globals::SCREEN_WIDTH + 1);
+        byte posY = random(0, Globals::SCREEN_HEIGHT + 1);
         bgVeryFarAway[i].setIsActive(true);
         bgVeryFarAway[i].setPosition(posX, posY);
         bgVeryFarAway[i].setSprite(ImageData::BG_STAR_VERY_FAR_SPRITE, 

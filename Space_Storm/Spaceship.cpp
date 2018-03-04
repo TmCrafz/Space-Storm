@@ -2,13 +2,23 @@
 #include "ImageData.hpp"
 
 Spaceship::Spaceship()
-: m_type[0] 
+: m_type{0}
 , m_hp{10}
 , m_projectileArrPos{0}
 , m_projectileTimeout{1}
 , m_timeoutTime(m_projectileTimeout)
 {
 
+}
+
+void Spaceship::setType(byte type)
+{
+    m_type = type;
+}
+
+byte Spaceship::getType() const
+{
+    return m_type;
 }
 
 void Spaceship::setHp(int hp)
