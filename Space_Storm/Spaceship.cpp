@@ -15,6 +15,11 @@ Spaceship::Spaceship()
 void Spaceship::setType(byte type)
 {
     m_type = type;
+    switch(m_type)
+    {
+        case 0: m_projectileTimeout = 1; break;
+        case 1: m_projectileTimeout = 3; break;
+    }
 }
 
 byte Spaceship::getType() const
