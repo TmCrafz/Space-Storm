@@ -10,7 +10,7 @@ Arduboy2 arduboy;
 
 Spaceship player;
 
-const byte ENEMY_CNT PROGMEM = 1;
+const byte ENEMY_CNT PROGMEM = 3;
 Spaceship enemys[ENEMY_CNT];
 
 const byte BG_VERY_FAR_AWAY_VEL PROGMEM = -10;
@@ -198,7 +198,7 @@ void setup()
         enemys[i].setType(1);
         enemys[i].setIsActive(true);
         enemys[i].setHp(1);
-        enemys[i].setPosition(100, i * 10);
+        enemys[i].setPosition(100, i * 20);
     }
     timeStampLast = millis();
 }

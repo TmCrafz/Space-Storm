@@ -47,12 +47,16 @@ void Spaceship::spawnProjectile()
             ImageData::PLAYER_PROJECTILE_DEFAULT_HEIGHT
     );
     m_projectiles[m_projectileArrPos].setDamage(1);
-    m_projectiles[m_projectileArrPos].setVelocity(16);
     m_projectiles[m_projectileArrPos].setIsActive(true);
     m_projectiles[m_projectileArrPos].setPosition(
         getPosition().x + getSpriteWidth() / 2 + 1,
         getPosition().y + getSpriteHeight() / 2
     );
+    switch(m_type)
+    {
+        case 0: m_projectiles[m_projectileArrPos].setVelocity(16); break;
+        case 1: m_projectiles[m_projectileArrPos].setVelocity(-16); break;
+    }
     m_projectileArrPos++;
     if (m_projectileArrPos > MAX_PROJECTILE_CNT - 1)
     {

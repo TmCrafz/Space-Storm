@@ -17,12 +17,12 @@ byte Projectile::getDamage() const
     return m_damage;
 }
 
-void Projectile::setVelocity(byte velocity)
+void Projectile::setVelocity(char velocity)
 {
     m_velocity = velocity;
 }
 
-byte Projectile::getVelocity() const
+char Projectile::getVelocity() const
 {
     return m_velocity;
 }
