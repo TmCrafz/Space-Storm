@@ -78,6 +78,18 @@ void Spaceship::clearProjectiles()
 
 }
 
+void Spaceship::moveAutomatic()
+{
+    if (m_type == 0)
+    {
+        return;
+    }
+    else if (m_type == 1)
+    {
+        addProjectile();
+    }
+}
+
 void Spaceship::update(float dt)
 {
     Entity::update(dt);
