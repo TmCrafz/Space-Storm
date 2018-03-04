@@ -26,7 +26,8 @@ public:
     int getHp() const;
     
     void addProjectile();
-    
+    void clearProjectiles();
+
     virtual void update(float dt) override;
     virtual void draw(const Arduboy2 &arduboy) override;
 };

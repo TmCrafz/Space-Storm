@@ -1,5 +1,6 @@
 #include "Spaceship.hpp"
 #include "ImageData.hpp"
+#include "Globals.hpp"
 
 Spaceship::Spaceship()
 : m_type{0}
@@ -59,6 +60,23 @@ void Spaceship::addProjectile()
     }        
 }
 
+void Spaceship::clearProjectiles()
+{
+    for (byte i = 0; i < MAX_PROJECTILE_CNT; i++)
+    {
+        if (!m_projectiles[i].isActive()) {
+            continue;
+        }
+        Vector2 projectilePos = m_projectiles[i].getPosition();
+        // Deactivate projectile when its outside of screen
+        if (projectilePos.x < 0 || projectilePos.x > Globals::SCREEN_WIDTH ||
+            projectilePos.y < 0 || projectilePos.y > Globals::SCREEN_HEIGHT)
+        {
+            m_projectiles[i].setIsActive(false);
+        }
+    }
+
+}
 
 void Spaceship::update(float dt)
 {
@@ -71,6 +89,7 @@ void Spaceship::update(float dt)
         }
         m_projectiles[i].update(dt);
     }
+    clearProjectiles();
 }
 
 void Spaceship::draw(const Arduboy2 &arduboy)
