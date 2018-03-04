@@ -13,12 +13,12 @@ Spaceship player;
 const byte ENEMY_CNT PROGMEM = 3;
 Spaceship enemys[ENEMY_CNT];
 
-const byte BG_VERY_FAR_AWAY_VEL PROGMEM = -10;
+const char BG_VERY_FAR_AWAY_VEL PROGMEM = -10;
 //const byte BG_VERY_FAR_AWAY_CNT = 16;
 const byte BG_VERY_FAR_AWAY_CNT PROGMEM = 0;
 Entity bgVeryFarAway[BG_VERY_FAR_AWAY_CNT];
 
-const byte BG_FAR_AWAY_VEL PROGMEM = -20;
+const char BG_FAR_AWAY_VEL PROGMEM = -20;
 //const byte BG_FAR_AWAY_CNT = 16;
 const byte BG_FAR_AWAY_CNT PROGMEM = 0;
 Entity bgFarAway[BG_FAR_AWAY_CNT];
