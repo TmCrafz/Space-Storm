@@ -14,7 +14,10 @@ Spaceship player;
 const byte maxPlayerProjectileCnt = 10;
 Projectile playerProjectiles[maxPlayerProjectileCnt];
 byte playerProjectileArrPos = 0;
-//Entity house1;
+
+const byte enemyCnt = 0;
+Spaceship enemys[enemyCnt];
+
 const byte BG_VERY_FAR_AWAY_VEL = -10;
 //const byte BG_VERY_FAR_AWAY_CNT = 16;
 const byte BG_VERY_FAR_AWAY_CNT = 0;
@@ -158,7 +161,8 @@ void setup()
     Serial.println("Test");
     arduboy.initRandomSeed();
     arduboy.clear();
-      
+    
+    player.setIsActive(true);
     player.setSprite(ImageData::PLAYER_SPRITE, ImageData::PLAYER_SPRITE_WIDTH, 
         ImageData::PLAYER_SPRITE_HEIGHT);
     //house1.setSprite(ImageData::BG_HOUSE_1_SPRITE, ImageData::BG_HOUSE_1_SPRITE_WIDTH, 
@@ -170,6 +174,7 @@ void setup()
     {
         byte posX = random(0, SCREEN_WIDTH + 1);
         byte posY = random(0, SCREEN_HEIGHT + 1);
+        bgFarAway[i].setIsActive(true);
         bgFarAway[i].setPosition(posX, posY);
         bgFarAway[i].setSprite(ImageData::BG_STAR_FAR_SPRITE, 
             ImageData::BG_STAR_FAR_SPRITE_WIDTH, 
@@ -180,6 +185,7 @@ void setup()
     {
         byte posX = random(0, SCREEN_WIDTH + 1);
         byte posY = random(0, SCREEN_HEIGHT + 1);
+        bgVeryFarAway[i].setIsActive(true);
         bgVeryFarAway[i].setPosition(posX, posY);
         bgVeryFarAway[i].setSprite(ImageData::BG_STAR_VERY_FAR_SPRITE, 
             ImageData::BG_STAR_VERY_FAR_SPRITE_WIDTH, 

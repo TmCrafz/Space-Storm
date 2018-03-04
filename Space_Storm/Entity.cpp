@@ -5,6 +5,7 @@ Entity::Entity()
 , m_pos{0, 0}
 , m_spriteWidth{0}
 , m_spriteHeight{0}
+, m_isActive{false}
 {
 
 }
@@ -37,6 +38,16 @@ byte Entity::getSpriteHeight()
     return m_spriteHeight;
 }
 
+bool Entity::isActive() const
+{
+    return m_isActive;
+}
+
+void Entity::setIsActive(bool isActive)
+{
+    m_isActive = isActive;
+}
+
 void Entity::move(byte x, byte y)
 {
     m_pos.x += x;
@@ -66,11 +77,18 @@ void Entity::moveBuffered(float x, float y)
 
 void Entity::update(float dt)
 {
-
+    if (!isActive())
+    {
+        return false;
+    }
 }
 
 void Entity::draw(const Arduboy2 &arduboy)
 {
+    if (!isActive())
+    {
+        return false;
+    }
     // params: posX, posY, image, width, height, COLOR 
     // (When white, all white pixels are drawn white)
     arduboy.drawBitmap(m_pos.x, m_pos.y, m_sprite, m_spriteWidth, m_spriteHeight);

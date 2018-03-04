@@ -13,7 +13,7 @@ private:
     Vector2 m_pos;
     float m_movementBufferX;
     float m_movementBufferY;
-
+    bool m_isActive;
 public:
     Entity();
 
@@ -24,6 +24,9 @@ public:
     
     byte getSpriteWidth();
     byte getSpriteHeight();
+    
+    void setIsActive(bool isActive);
+    bool isActive() const;
 
     void move(byte x, byte y);
     // Remember the movement and only moves when a full step is full. When movement is more
