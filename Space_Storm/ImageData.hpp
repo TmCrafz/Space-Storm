@@ -41,9 +41,9 @@ namespace ImageData
     
     // player_projectile_default
     const unsigned char PLAYER_PROJECTILE_DEFAULT[] PROGMEM= {
-        0x1,
+        0x1, 0x1
     };
-    const byte PLAYER_PROJECTILE_DEFAULT_WIDTH = 1;
+    const byte PLAYER_PROJECTILE_DEFAULT_WIDTH = 2;
     const byte PLAYER_PROJECTILE_DEFAULT_HEIGHT = 1;
 
 };
